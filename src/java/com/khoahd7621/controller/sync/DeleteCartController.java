@@ -28,9 +28,7 @@ public class DeleteCartController extends HttpServlet {
             if (carts == null) {
                 carts = new LinkedHashMap<>();
             }
-            if (carts.containsKey(pid)) {
-                carts.remove(pid);
-            }
+            carts.remove(pid);
             if (carts.size() > 0) {
                 session.setAttribute("carts", carts);
                 // Save cookie contain list cart to client
