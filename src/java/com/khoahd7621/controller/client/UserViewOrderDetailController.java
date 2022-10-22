@@ -22,6 +22,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author KhoaHD7621
  */
+@SuppressWarnings("SameReturnValue")
 public class UserViewOrderDetailController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -95,15 +96,5 @@ public class UserViewOrderDetailController extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author KhoaHD7621
  */
+@SuppressWarnings("SameReturnValue")
 public class LogoutController extends HttpServlet {
 
     private static final String ERROR = "HomeController";
@@ -77,15 +78,5 @@ public class LogoutController extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

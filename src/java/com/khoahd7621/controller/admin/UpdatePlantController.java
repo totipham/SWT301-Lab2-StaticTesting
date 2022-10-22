@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author KhoaHD7621
  */
+@SuppressWarnings("SameReturnValue")
 public class UpdatePlantController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -82,15 +83,5 @@ public class UpdatePlantController extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

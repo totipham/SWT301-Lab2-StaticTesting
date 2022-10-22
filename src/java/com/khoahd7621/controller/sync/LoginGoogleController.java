@@ -27,10 +27,11 @@ import org.apache.http.client.fluent.Form;
  *
  * @author KhoaHD7621
  */
+@SuppressWarnings("SameReturnValue")
 public class LoginGoogleController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         try {
             String code = request.getParameter("code");
@@ -66,7 +67,7 @@ public class LoginGoogleController extends HttpServlet {
         }
     }
 
-    public static String getToken(String code) throws ClientProtocolException, IOException {
+    public static String getToken(String code) throws IOException {
         // call api to get token
         String response = Request.Post(Constants.GOOGLE_LINK_GET_TOKEN)
                 .bodyForm(Form.form().add("client_id", Constants.GOOGLE_CLIENT_ID)
@@ -80,7 +81,7 @@ public class LoginGoogleController extends HttpServlet {
         return accessToken;
     }
 
-    public static UserGoogle getUserInfo(final String accessToken) throws ClientProtocolException, IOException {
+    public static UserGoogle getUserInfo(final String accessToken) throws IOException {
         String link = Constants.GOOGLE_LINK_GET_USER_INFO + accessToken;
         String response = Request.Get(link).execute().returnContent().asString();
 
@@ -100,7 +101,7 @@ public class LoginGoogleController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws Exception {
         processRequest(request, response);
     }
 
@@ -114,18 +115,8 @@ public class LoginGoogleController extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws Exception {
         processRequest(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

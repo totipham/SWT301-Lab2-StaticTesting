@@ -21,6 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author KhoaHD7621
  */
+@SuppressWarnings("SameReturnValue")
 public class OrderAgainController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -106,15 +107,5 @@ public class OrderAgainController extends HttpServlet {
             log("Error at CheckoutController: " + e.toString());
         }
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

@@ -105,8 +105,4 @@ public class product implements Tag {
         return EVAL_PAGE;
     }
 
-    @Override
-    public void release() {
-    }
-
 }

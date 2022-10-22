@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author KhoaHD7621
  */
+@SuppressWarnings({"ALL", "SameReturnValue"})
 public class AboutUsController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -53,15 +54,5 @@ public class AboutUsController extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

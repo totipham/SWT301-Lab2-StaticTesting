@@ -20,6 +20,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author KhoaHD7621
  */
+@SuppressWarnings("SameReturnValue")
 public class AdminHomeController extends HttpServlet {
     
     private static final String ADMIN_PAGE = "admin.jsp";
@@ -76,15 +77,5 @@ public class AdminHomeController extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

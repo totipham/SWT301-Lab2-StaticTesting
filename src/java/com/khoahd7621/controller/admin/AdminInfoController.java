@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author KhoaHD7621
  */
+@SuppressWarnings("SameReturnValue")
 public class AdminInfoController extends HttpServlet {
     
     private static final String ADMIN_PAGE = "admininfo.jsp";
@@ -82,10 +83,5 @@ public class AdminInfoController extends HttpServlet {
             log("Error at AdminInfoController: " + e.toString());
         }
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author KhoaHD7621
  */
+@SuppressWarnings("SameReturnValue")
 public class RegistrationController extends HttpServlet {
 
     @Override
@@ -65,15 +66,5 @@ public class RegistrationController extends HttpServlet {
             log("Error at RegistrationController: " + e.toString());
         }
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }
