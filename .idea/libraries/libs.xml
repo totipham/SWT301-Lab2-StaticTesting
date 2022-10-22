@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/libs/sqljdbc4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/libs/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/libs/gson-2.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/libs/lombok.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/libs/fluent-hc-4.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/libs/httpcore-4.4.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/libs/javax.activation-1.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/libs/httpclient-4.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/libs/javax.mail.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

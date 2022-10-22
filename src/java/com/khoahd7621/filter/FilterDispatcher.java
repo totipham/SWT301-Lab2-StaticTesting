@@ -38,11 +38,11 @@ public class FilterDispatcher implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         String uri = req.getRequestURI();
-        String url = HOME_PAGE;
+        String url;
         try {
             int lastIndex = uri.lastIndexOf("/");
             String resource = uri.substring(lastIndex + 1);
-            if (resource.length() <= 0) {
+            if (resource.length() == 0) {
                 chain.doFilter(request, response);
                 return;
             }

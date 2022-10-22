@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class DBUtils {
 
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
-        Connection conn = null;
+        Connection conn;
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         String url = "jdbc:sqlserver://localhost:1433;databaseName=PlantShopDB";
         conn = DriverManager.getConnection(url, "sa", "0792596763");
