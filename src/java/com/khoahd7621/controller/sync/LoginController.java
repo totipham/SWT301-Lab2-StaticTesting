@@ -54,21 +54,19 @@ public class LoginController extends HttpServlet {
                     session.setAttribute("LOGIN_USER", account);
                     if (role == 0) {
                         // Load cart in Cookie of this user to server if exists
-                        String cartStr = "";
-                        if (c != null) {
-                            for (Cookie Cooky : c) {
-                                if (Cooky.getName().equals("cart")) {
-                                    cartStr += Cooky.getValue();
-                                }
+                        StringBuilder cartStr = new StringBuilder();
+                        for (Cookie Cooky : c) {
+                            if (Cooky.getName().equals("cart")) {
+                                cartStr.append(Cooky.getValue());
                             }
                         }
                         PlantDAO plantDAO = new PlantDAO();
                         Map<Integer, Cart> carts = new LinkedHashMap<>();
                         // If you get the cart string from the cookie,
                         // convert this string to a cart and save it to the session
-                        if (!cartStr.equals("")) {
+                        if (!cartStr.toString().equals("")) {
                             // Format cart in cookie: pId1:quantity1-pId2:quantity2-pId3:quantity3-...
-                            String[] s = cartStr.split("-");
+                            String[] s = cartStr.toString().split("-");
                             for (String i : s) {
                                 // Format each element: pId:quantity
                                 String[] n = i.split(":");

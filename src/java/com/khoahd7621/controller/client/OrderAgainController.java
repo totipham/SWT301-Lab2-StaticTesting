@@ -60,7 +60,7 @@ public class OrderAgainController extends HttpServlet {
             String phone = request.getParameter("phone");
             String address = request.getParameter("address");
             String note = request.getParameter("note").trim();
-            if (note == null || note.isEmpty() || note.equals("")) {
+            if (note == null || note.isEmpty()) {
                 note = "No notes";
             }
 

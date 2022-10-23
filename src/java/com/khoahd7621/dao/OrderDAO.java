@@ -280,14 +280,7 @@ public class OrderDAO {
                 ex.printStackTrace();
             }
             e.printStackTrace();
-            check = false;
         } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (psm != null) {
-                psm.close();
-            }
             if (conn != null) {
                 conn.close();
             }

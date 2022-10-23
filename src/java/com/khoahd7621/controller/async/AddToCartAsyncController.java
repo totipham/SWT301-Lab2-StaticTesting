@@ -63,17 +63,17 @@ public class AddToCartAsyncController extends HttpServlet {
                 }
             }
             // Convert carts to string for save it to cookie
-            String cart = "";
+            StringBuilder cart = new StringBuilder();
             for (Map.Entry<Integer, Cart> entry : carts.entrySet()) {
                 int plantId = entry.getKey();
                 Cart cartEl = entry.getValue();
-                if (cart.equals("")) {
-                    cart = plantId + ":" + cartEl.getQuantity();
+                if (cart.toString().equals("")) {
+                    cart = new StringBuilder(plantId + ":" + cartEl.getQuantity());
                 } else {
-                    cart += "-" + plantId + ":" + cartEl.getQuantity();
+                    cart.append("-").append(plantId).append(":").append(cartEl.getQuantity());
                 }
             }
-            Cookie cookieCart = new Cookie("cart", cart);
+            Cookie cookieCart = new Cookie("cart", cart.toString());
             cookieCart.setMaxAge(60 * 60 * 24);
             response.addCookie(cookieCart);
 

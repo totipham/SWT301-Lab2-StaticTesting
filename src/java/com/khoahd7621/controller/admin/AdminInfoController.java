@@ -77,7 +77,6 @@ public class AdminInfoController extends HttpServlet {
                     request.setAttribute("MSG_ERROR", "Oops! Something went wrong! Try later!");
                     request.getRequestDispatcher("invalid.jsp").forward(request, response);
                 }
-            } else {
             }
         } catch (Exception e) {
             log("Error at AdminInfoController: " + e);
