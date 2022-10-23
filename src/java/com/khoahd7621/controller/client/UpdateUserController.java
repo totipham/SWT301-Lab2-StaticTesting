@@ -1,7 +1,5 @@
 package com.khoahd7621.controller.client;
 
-import com.khoahd7621.dao.AccountDAO;
-import com.khoahd7621.model.Account;
 import com.khoahd7621.util.SecurityUtils;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -20,7 +18,7 @@ public class UpdateUserController extends HttpServlet {
     private static final String USER_PAGE = "UserHomeController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException {
         response.setContentType("text/html;charset=UTF-8");
         try {
             HttpSession session = request.getSession();
@@ -74,30 +72,34 @@ public class UpdateUserController extends HttpServlet {
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+// --Commented out by Inspection START (10/23/2022 9:00 PM):
+//    /**
+//     * Handles the HTTP <code>GET</code> method.
+//     *
+//     * @param request servlet request
+//     * @param response servlet response
+//     * @throws ServletException if a servlet-specific error occurs
+//     * @throws IOException if an I/O error occurs
+//     */
+//    @Override
+//    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+// --Commented out by Inspection START (10/23/2022 9:00 PM):
+////            throws ServletException, IOException {
+////        processRequest(request, response);
+////    }
+//// --Commented out by Inspection STOP (10/23/2022 9:00 PM)
+//
+//    /**
+//     * Handles the HTTP <code>POST</code> method.
+//     *
+//     * @param request servlet request
+//     * @param response servlet response
+//     * @throws ServletException if a servlet-specific error occurs
+//     * @throws IOException if an I/O error occurs
+//     */
+//    @Override
+//    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+// --Commented out by Inspection STOP (10/23/2022 9:00 PM)
             throws ServletException, IOException {
         processRequest(request, response);
     }

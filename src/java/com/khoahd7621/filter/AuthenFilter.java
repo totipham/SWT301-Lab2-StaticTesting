@@ -1,6 +1,5 @@
 package com.khoahd7621.filter;
 
-import com.khoahd7621.model.Account;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -26,9 +25,6 @@ public class AuthenFilter implements Filter {
     private static List<String> ADMIN_LIST;
     private static List<String> USER_LIST;
     private static final String HOME = "HomeController";
-    private static final String AD_HOME = "AdminHomeController";
-    private static final String US_HOME = "UserHomeController";
-    private static final int AD = 1;
     private static final int US = 0;
 
     private static final boolean debug = true;
@@ -96,134 +92,146 @@ public class AuthenFilter implements Filter {
         USER_LIST.add("orderAgain.jsp");
     }
 
-    private void doBeforeProcessing(ServletRequest request, ServletResponse response)
-            throws IOException, ServletException {
-        if (debug) {
-            log("AuthenFilter:DoBeforeProcessing");
-        }
+// --Commented out by Inspection START (10/23/2022 9:00 PM):
+//    private void doBeforeProcessing(ServletRequest request, ServletResponse response)
+//            throws ServletException {
+//        if (debug) {
+//            log("AuthenFilter:DoBeforeProcessing");
+//        }
+//
+//        // Write code here to process the request and/or response before
+//        // the rest of the filter chain is invoked.
+//        // For example, a logging filter might log items on the request object,
+//        // such as the parameters.
+//        /*
+//	for (Enumeration en = request.getParameterNames(); en.hasMoreElements(); ) {
+//	    String name = (String)en.nextElement();
+//	    String values[] = request.getParameterValues(name);
+//	    int n = values.length;
+//	    StringBuffer buf = new StringBuffer();
+//	    buf.append(name);
+//	    buf.append("=");
+//	    for(int i=0; i < n; i++) {
+//	        buf.append(values[i]);
+//	        if (i < n-1)
+//	            buf.append(",");
+//	    }
+//	    log(buf.toString());
+//	}
+//         */
+//    }
+// --Commented out by Inspection STOP (10/23/2022 9:00 PM)
 
-        // Write code here to process the request and/or response before
-        // the rest of the filter chain is invoked.
-        // For example, a logging filter might log items on the request object,
-        // such as the parameters.
-        /*
-	for (Enumeration en = request.getParameterNames(); en.hasMoreElements(); ) {
-	    String name = (String)en.nextElement();
-	    String values[] = request.getParameterValues(name);
-	    int n = values.length;
-	    StringBuffer buf = new StringBuffer();
-	    buf.append(name);
-	    buf.append("=");
-	    for(int i=0; i < n; i++) {
-	        buf.append(values[i]);
-	        if (i < n-1)
-	            buf.append(",");
-	    }
-	    log(buf.toString());
-	}
-         */
-    }
-
-    private void doAfterProcessing(ServletRequest request, ServletResponse response)
-            throws IOException, ServletException {
-        if (debug) {
-            log("AuthenFilter:DoAfterProcessing");
-        }
-
-        // Write code here to process the request and/or response after
-        // the rest of the filter chain is invoked.
-        // For example, a logging filter might log the attributes on the
-        // request object after the request has been processed. 
-        /*
-	for (Enumeration en = request.getAttributeNames(); en.hasMoreElements(); ) {
-	    String name = (String)en.nextElement();
-	    Object value = request.getAttribute(name);
-	    log("attribute: " + name + "=" + value.toString());
-
-	}
-         */
-        // For example, a filter might append something to the response.
-        /*
-	PrintWriter respOut = new PrintWriter(response.getWriter());
-	respOut.println("<P><B>This has been appended by an intrusive filter.</B>");
-         */
-    }
-
-    public void doFilter(ServletRequest request, ServletResponse response,
-            FilterChain chain)
-            throws IOException, ServletException {
-        try {
-            HttpServletRequest req = (HttpServletRequest) request;
-            HttpServletResponse res = (HttpServletResponse) response;
-            String uri = req.getRequestURI();
-            // Pass .jpg, .pgn, .gif, .css files
-            if (uri.contains(".jpg") || uri.contains(".png") || uri.contains(".gif") || uri.contains(".css") || uri.contains("fonts")) {
-                chain.doFilter(request, response);
-                return;
-            }
-            // Pass .js files
-            int indexJs = uri.lastIndexOf(".");
-            String jsSource = uri.substring(indexJs + 1);
-            if (jsSource.equals("js")) {
-                chain.doFilter(request, response);
-                return;
-            }
-            // If first time access web, it will call LoginController
-            int index = uri.lastIndexOf("/");
-            String resource = uri.substring(index + 1);
-            if (resource.isEmpty() || resource.equals("")) {
-                res.sendRedirect("LoginController");
-                return;
-            }
-            HttpSession session = req.getSession();
-            if (session != null && session.getAttribute("LOGIN_USER") != null) {
-                // Authentication if logged in
-                Account account = (Account) session.getAttribute("LOGIN_USER");
-                int role = account.getRole();
-                if (role == AD) {
-                    if (ADMIN_LIST.contains(resource)) {
-                        chain.doFilter(request, response);
-                    } else {
-                        res.sendRedirect(AD_HOME);
-                    }
-                } else if (role == US) {
-                    if (USER_LIST.contains(resource)) {
-                        chain.doFilter(request, response);
-                    } else {
-                        res.sendRedirect(US_HOME);
-                    }
-                }
-            } else {
-                if (uri.contains("AboutUsController")
-                        || uri.contains("AddToCartController")
-                        || uri.contains("CartController")
-                        || uri.contains("CheckOutController")
-                        || uri.contains("DeleteCartController")
-                        || uri.contains("LoadMoreController")
-                        || uri.contains("LoginController")
-                        || uri.contains("PlantDetailController")
-                        || uri.contains("RegistrationController")
-                        || uri.contains("SearchController")
-                        || uri.contains("UpdateCartQuantityController")
-                        || uri.contains("login.jsp")
-                        || uri.contains("about.jsp")
-                        || uri.contains("registration.jsp")
-                        || uri.contains("HomeController")
-                        || uri.contains("ViewAllController")
-                        || uri.contains("SendEmailController")
-                        || uri.contains("AddToCartAsyncController")
-                        || uri.contains("LoginGoogleController")
-                        || uri.contains("blog.jsp")
-                        || uri.contains("blog")
-                        || uri.contains("blogdetail.jsp")
-                        || uri.contains("blogDetail")) {
-                    chain.doFilter(request, response);
-                } else {
-                    res.sendRedirect(HOME);
-                }
-            }
-        } catch (Exception e) {
-            log("Error at AuthenFilter: " + e.toString());
+// --Commented out by Inspection START (10/23/2022 9:00 PM):
+//    private void doAfterProcessing(ServletRequest request, ServletResponse response)
+//            throws ServletException {
+//        if (debug) {
+//            log("AuthenFilter:DoAfterProcessing");
+//        }
+//
+//        // Write code here to process the request and/or response after
+//        // the rest of the filter chain is invoked.
+//        // For example, a logging filter might log the attributes on the
+//        // request object after the request has been processed.
+//        /*
+//	for (Enumeration en = request.getAttributeNames(); en.hasMoreElements(); ) {
+//	    String name = (String)en.nextElement();
+//	    Object value = request.getAttribute(name);
+// --Commented out by Inspection START (10/23/2022 9:00 PM):
+////	    log("attribute: " + name + "=" + value.toString());
+////
+////	}
+////         */
+////        // For example, a filter might append something to the response.
+////        /*
+////	PrintWriter respOut = new PrintWriter(response.getWriter());
+////	respOut.println("<P><B>This has been appended by an intrusive filter.</B>");
+////         */
+////    }
+//// --Commented out by Inspection STOP (10/23/2022 9:00 PM)
+//
+//    public void doFilter(ServletRequest request, ServletResponse response,
+//            FilterChain chain)
+//            throws ServletException {
+//        try {
+//            HttpServletRequest req = (HttpServletRequest) request;
+//            HttpServletResponse res = (HttpServletResponse) response;
+//            String uri = req.getRequestURI();
+//            // Pass .jpg, .pgn, .gif, .css files
+//            if (uri.contains(".jpg") || uri.contains(".png") || uri.contains(".gif") || uri.contains(".css") || uri.contains("fonts")) {
+//                chain.doFilter(request, response);
+//                return;
+//            }
+//            // Pass .js files
+//            int indexJs = uri.lastIndexOf(".");
+//            String jsSource = uri.substring(indexJs + 1);
+//            if (jsSource.equals("js")) {
+//                chain.doFilter(request, response);
+//                return;
+//            }
+//            // If first time access web, it will call LoginController
+//            int index = uri.lastIndexOf("/");
+//            String resource = uri.substring(index + 1);
+//            if (resource.isEmpty() || resource.equals("")) {
+//                res.sendRedirect("LoginController");
+//                return;
+//            }
+//            HttpSession session = req.getSession();
+//            if (session != null && session.getAttribute("LOGIN_USER") != null) {
+//                // Authentication if logged in
+//                Account account = (Account) session.getAttribute("LOGIN_USER");
+//                int role = account.getRole();
+//                if (role == AD) {
+//                    if (ADMIN_LIST.contains(resource)) {
+//                        chain.doFilter(request, response);
+//                    } else {
+//                        res.sendRedirect(AD_HOME);
+//                    }
+//                } else if (role == US) {
+//                    if (USER_LIST.contains(resource)) {
+//                        chain.doFilter(request, response);
+//                    } else {
+//                        res.sendRedirect(US_HOME);
+//                    }
+//                }
+//            } else {
+//                if (uri.contains("AboutUsController")
+//                        || uri.contains("AddToCartController")
+//                        || uri.contains("CartController")
+//                        || uri.contains("CheckOutController")
+//                        || uri.contains("DeleteCartController")
+//                        || uri.contains("LoadMoreController")
+//                        || uri.contains("LoginController")
+//                        || uri.contains("PlantDetailController")
+//                        || uri.contains("RegistrationController")
+//                        || uri.contains("SearchController")
+//                        || uri.contains("UpdateCartQuantityController")
+//                        || uri.contains("login.jsp")
+//                        || uri.contains("about.jsp")
+//                        || uri.contains("registration.jsp")
+//                        || uri.contains("HomeController")
+//                        || uri.contains("ViewAllController")
+//                        || uri.contains("SendEmailController")
+// --Commented out by Inspection START (10/23/2022 9:00 PM):
+////                        || uri.contains("AddToCartAsyncController")
+////                        || uri.contains("LoginGoogleController")
+// --Commented out by Inspection START (10/23/2022 9:01 PM):
+//////                        || uri.contains("blog.jsp")
+//////                        || uri.contains("blog")
+//// --Commented out by Inspection STOP (10/23/2022 9:00 PM)
+////                        || uri.contains("blogdetail.jsp")
+//// --Commented out by Inspection START (10/23/2022 9:01 PM):
+// --Commented out by Inspection STOP (10/23/2022 9:01 PM)
+//// --Commented out by Inspection STOP (10/23/2022 9:00 PM)
+//                        || uri.contains("blogDetail")) {
+//                    chain.doFilter(request, response);
+//                } else {
+//                    res.sendRedirect(HOME);
+//                }
+//            }
+//        } catch (Exception e) {
+//            log("Error at AuthenFilter: " + e.toString());
+// --Commented out by Inspection STOP (10/23/2022 9:01 PM)
         }
 
     }
@@ -236,47 +244,49 @@ public class AuthenFilter implements Filter {
     }
 
     /**
-     * Set the filter configuration object for this filter.
-     *
-     * @param filterConfig The filter configuration object
-     */
-    public void setFilterConfig(FilterConfig filterConfig) {
-        this.filterConfig = filterConfig;
-    }
-
-    /**
-     * Init method for this filter
-     */
-    public void init(FilterConfig filterConfig) {
-        this.filterConfig = filterConfig;
-        if (filterConfig != null) {
-            if (debug) {
-                log("AuthenFilter:Initializing filter");
-            }
-        }
-    }
-
-    /**
-     * Return a String representation of this object.
-     */
-    @Override
-    public String toString() {
-        if (filterConfig == null) {
-            return ("AuthenFilter()");
-        }
-        StringBuffer sb = new StringBuffer("AuthenFilter(");
-        sb.append(filterConfig);
-        sb.append(")");
-        return (sb.toString());
-    }
-
-    private void sendProcessingError(Throwable t, ServletResponse response) {
-        String stackTrace = getStackTrace(t);
-
-        if (stackTrace != null && !stackTrace.equals("")) {
-            try {
-                response.setContentType("text/html");
-                PrintStream ps = new PrintStream(response.getOutputStream());
+// --Commented out by Inspection START (10/23/2022 9:01 PM):
+//     * Set the filter configuration object for this filter.
+//     *
+//     * @param filterConfig The filter configuration object
+//     */
+//    public void setFilterConfig(FilterConfig filterConfig) {
+//        this.filterConfig = filterConfig;
+//    }
+//
+//    /**
+//     * Init method for this filter
+//     */
+//    public void init(FilterConfig filterConfig) {
+//        this.filterConfig = filterConfig;
+//        if (filterConfig != null) {
+//            if (debug) {
+//                log("AuthenFilter:Initializing filter");
+//            }
+//        }
+//    }
+//
+//    /**
+//     * Return a String representation of this object.
+//     */
+//    @Override
+//    public String toString() {
+//        if (filterConfig == null) {
+//            return ("AuthenFilter()");
+//        }
+//        StringBuffer sb = new StringBuffer("AuthenFilter(");
+//        sb.append(filterConfig);
+//        sb.append(")");
+//        return (sb.toString());
+//    }
+//
+//    private void sendProcessingError(Throwable t, ServletResponse response) {
+//        String stackTrace = getStackTrace(t);
+//
+//        if (stackTrace != null && !stackTrace.equals("")) {
+//            try {
+//                response.setContentType("text/html");
+//                PrintStream ps = new PrintStream(response.getOutputStream());
+// --Commented out by Inspection STOP (10/23/2022 9:01 PM)
                 PrintWriter pw = new PrintWriter(ps);
                 pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
 
@@ -298,20 +308,6 @@ public class AuthenFilter implements Filter {
             } catch (Exception ex) {
             }
         }
-    }
-
-    public static String getStackTrace(Throwable t) {
-        String stackTrace = null;
-        try {
-            StringWriter sw = new StringWriter();
-            PrintWriter pw = new PrintWriter(sw);
-            t.printStackTrace(pw);
-            pw.close();
-            sw.close();
-            stackTrace = sw.getBuffer().toString();
-        } catch (Exception ex) {
-        }
-        return stackTrace;
     }
 
     public void log(String msg) {
