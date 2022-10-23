@@ -48,7 +48,7 @@ public class CheckOutController extends HttpServlet {
                 response.sendRedirect("HomeController");
             }
         } catch (Exception e) {
-            log("Error at CheckOutController: " + e.toString());
+            log("Error at CheckOutController: " + e);
         }
     }
 
@@ -123,7 +123,7 @@ public class CheckOutController extends HttpServlet {
                 response.sendRedirect("HomeController");
             }
         } catch (Exception e) {
-            log("Error at CheckoutController: " + e.toString());
+            log("Error at CheckoutController: " + e);
         }
     }
 }

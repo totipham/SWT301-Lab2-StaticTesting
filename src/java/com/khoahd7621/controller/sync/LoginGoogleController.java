@@ -63,7 +63,7 @@ public class LoginGoogleController extends HttpServlet {
                 response.sendRedirect("HomeController");
             }
         } catch (Exception e) {
-            log("Error at LoginGoogleController: " + e.toString());
+            log("Error at LoginGoogleController: " + e);
         }
     }
 

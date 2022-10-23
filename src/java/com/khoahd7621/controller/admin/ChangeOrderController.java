@@ -20,26 +20,24 @@ public class ChangeOrderController extends HttpServlet {
         try {
             String action = request.getParameter("action");
             if (action != null) {
-                switch(action) {
-                    case "completeOrder":
-                        String orderIdTxt = request.getParameter("orderId");
-                        if (orderIdTxt != null) {
-                            boolean check = new OrderDAO().finishOrder(Integer.parseInt(orderIdTxt), 2);
-                            if (check) {
-                                request.setAttribute("MSG_SUCCESS", "You have successfully completed orders!");
-                            } else {
-                                request.setAttribute("MSG_ERROR", "An error occurred! Completed order failed!");
-                            }
+                if ("completeOrder".equals(action)) {
+                    String orderIdTxt = request.getParameter("orderId");
+                    if (orderIdTxt != null) {
+                        boolean check = new OrderDAO().finishOrder(Integer.parseInt(orderIdTxt), 2);
+                        if (check) {
+                            request.setAttribute("MSG_SUCCESS", "You have successfully completed orders!");
                         } else {
-                            request.setAttribute("MSG_ERROR", "Oops, something went wrong! Try later!");
+                            request.setAttribute("MSG_ERROR", "An error occurred! Completed order failed!");
                         }
-                        break;
+                    } else {
+                        request.setAttribute("MSG_ERROR", "Oops, something went wrong! Try later!");
+                    }
                 }
             } else {
                 request.setAttribute("MSG_ERROR", "Oops, something went wrong! Try later!");
             }
         } catch (Exception e) {
-            log("Error at ChangeOrderController: " + e.toString());
+            log("Error at ChangeOrderController: " + e);
         } finally {
             request.getRequestDispatcher("AdminManageOrderController").forward(request, response);
         }

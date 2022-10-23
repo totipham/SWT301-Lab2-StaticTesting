@@ -68,9 +68,9 @@ public class AddToCartAsyncController extends HttpServlet {
                 int plantId = entry.getKey();
                 Cart cartEl = entry.getValue();
                 if (cart.equals("")) {
-                    cart = Integer.toString(plantId) + ":" + Integer.toString(cartEl.getQuantity());
+                    cart = plantId + ":" + cartEl.getQuantity();
                 } else {
-                    cart += "-" + Integer.toString(plantId) + ":" + Integer.toString(cartEl.getQuantity());
+                    cart += "-" + plantId + ":" + cartEl.getQuantity();
                 }
             }
             Cookie cookieCart = new Cookie("cart", cart);
@@ -89,7 +89,7 @@ public class AddToCartAsyncController extends HttpServlet {
             String json = gson.toJson(list);
             response.getWriter().println(json);
         } catch (Exception e) {
-            log("Error at AddToCartAsyncController: " + e.toString());
+            log("Error at AddToCartAsyncController: " + e);
         }
     }
 

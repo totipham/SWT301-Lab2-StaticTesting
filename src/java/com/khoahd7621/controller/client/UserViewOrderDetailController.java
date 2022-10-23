@@ -64,7 +64,7 @@ public class UserViewOrderDetailController extends HttpServlet {
                 response.sendRedirect("HomeController");
             }
         } catch (Exception e) {
-            log("Error at UserViewOrderDetailController: " + e.toString());
+            log("Error at UserViewOrderDetailController: " + e);
         }
     }
 

@@ -70,7 +70,7 @@ public class UpdateUserController extends HttpServlet {
             } else {
             }
         } catch (Exception e) {
-            log("Error at UpdateUserController: " + e.toString());
+            log("Error at UpdateUserController: " + e);
         }
     }
 

@@ -62,7 +62,7 @@ public class SendEmailController extends HttpServlet {
                 }
             }
         } catch (Exception e) {
-            log("Error at SendEmailController: " + e.toString());
+            log("Error at SendEmailController: " + e);
         }
     }
 

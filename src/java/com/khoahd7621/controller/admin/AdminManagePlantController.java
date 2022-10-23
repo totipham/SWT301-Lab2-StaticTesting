@@ -24,7 +24,7 @@ public class AdminManagePlantController extends HttpServlet {
             request.setAttribute("listPlants", listPlants);
             request.setAttribute("destPage", "managePlant");
         } catch (Exception e) {
-            log("Error at AdminManagePlantController: " + e.toString());
+            log("Error at AdminManagePlantController: " + e);
         } finally {
             request.getRequestDispatcher("managePlant.jsp").forward(request, response);
         }

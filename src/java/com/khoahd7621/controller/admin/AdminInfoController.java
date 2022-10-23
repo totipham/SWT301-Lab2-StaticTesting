@@ -25,7 +25,7 @@ public class AdminInfoController extends HttpServlet {
         try {
             response.sendRedirect(ADMIN_PAGE);
         } catch (Exception e) {
-            log("Error at AdminInfo: " + e.toString());
+            log("Error at AdminInfo: " + e);
         }
     }
 
@@ -80,7 +80,7 @@ public class AdminInfoController extends HttpServlet {
             } else {
             }
         } catch (Exception e) {
-            log("Error at AdminInfoController: " + e.toString());
+            log("Error at AdminInfoController: " + e);
         }
     }
 

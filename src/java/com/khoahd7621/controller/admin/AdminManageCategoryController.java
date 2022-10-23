@@ -27,7 +27,7 @@ public class AdminManageCategoryController extends HttpServlet {
             }
             request.setAttribute("destPage", "manageCategory");
         } catch (Exception e) {
-            log("Error at AdminManagePlantController: " + e.toString());
+            log("Error at AdminManagePlantController: " + e);
         } finally {
             request.getRequestDispatcher("manageCategory.jsp").forward(request, response);
         }

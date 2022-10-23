@@ -24,7 +24,7 @@ public class AdminManageOrderController extends HttpServlet {
             request.setAttribute("listOrders", listOrders);
             request.setAttribute("destPage", "manageOrder");
         } catch (Exception e) {
-            log("Error at AdminManageOrderController: " + e.toString());
+            log("Error at AdminManageOrderController: " + e);
         } finally {
             request.getRequestDispatcher("manageOrder.jsp").forward(request, response);
         }

@@ -44,7 +44,7 @@ public class LogoutController extends HttpServlet {
             session = request.getSession();
             session.setAttribute("destPage", "home");
         } catch (Exception e) {
-            log("Error at LogoutController: " + e.toString());
+            log("Error at LogoutController: " + e);
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

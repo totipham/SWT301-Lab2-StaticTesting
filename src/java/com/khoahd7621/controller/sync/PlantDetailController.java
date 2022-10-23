@@ -30,7 +30,7 @@ public class PlantDetailController extends HttpServlet {
             request.setAttribute("plant", plant);
             request.setAttribute("listRelativePlants", listRelativePlants);
         } catch (Exception e) {
-            log("Error at PlantDetailController: " + e.toString());
+            log("Error at PlantDetailController: " + e);
         } finally {
             request.getRequestDispatcher("plantdetail.jsp").forward(request, response);
         }

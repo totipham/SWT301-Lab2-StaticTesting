@@ -51,7 +51,7 @@ public class UpdateAccountController extends HttpServlet {
                 request.setAttribute("MSG_ERROR", "Oops, something went wrong! Please try later!");
             }
         } catch (Exception e) {
-            log("Error at AdminManageAccountController: " + e.toString());
+            log("Error at AdminManageAccountController: " + e);
         } finally {
             request.getRequestDispatcher("AdminManageAccountController").forward(request, response);
         }

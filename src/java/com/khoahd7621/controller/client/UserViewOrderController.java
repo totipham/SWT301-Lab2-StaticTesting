@@ -63,7 +63,7 @@ public class UserViewOrderController extends HttpServlet {
                 }
             }
         } catch (Exception e) {
-            log("Error at UserViewOrderController: " + e.toString());
+            log("Error at UserViewOrderController: " + e);
         }
     }
 

@@ -27,7 +27,7 @@ public class CategoryDAO {
             if (conn != null) {
                 psm = conn.prepareStatement(INSERT_NEW_CATEGORY);
                 psm.setString(1, cateName);
-                check = psm.executeUpdate() > 0 ? true : false;
+                check = psm.executeUpdate() > 0;
             }
         } catch (Exception e) {
         } finally {
@@ -51,7 +51,7 @@ public class CategoryDAO {
                 psm = conn.prepareStatement(UPDATE_CATEGORY_INFO);
                 psm.setString(1, cateName);
                 psm.setInt(2, cateId);
-                check = psm.executeUpdate() > 0 ? true : false;
+                check = psm.executeUpdate() > 0;
             }
         } catch (Exception e) {
         } finally {

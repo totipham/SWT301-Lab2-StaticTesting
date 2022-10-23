@@ -133,7 +133,7 @@ public class PlantDAO {
                 psm.setString(4, description);
                 psm.setInt(5, status);
                 psm.setInt(6, cateId);
-                check = psm.executeUpdate() > 0 ? true : false;
+                check = psm.executeUpdate() > 0;
             }
         } catch (Exception e) {
         } finally {
@@ -162,7 +162,7 @@ public class PlantDAO {
                 psm.setInt(5, status);
                 psm.setInt(6, cateId);
                 psm.setInt(7, pid);
-                check = psm.executeUpdate() > 0 ? true : false;
+                check = psm.executeUpdate() > 0;
             }
         } catch (Exception e) {
         } finally {

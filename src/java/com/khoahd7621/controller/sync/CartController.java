@@ -39,7 +39,7 @@ public class CartController extends HttpServlet {
             request.setAttribute("carts", carts);
             session.setAttribute("destPage", "cart");
         } catch (Exception e) {
-            log("Error at CartController: " + e.toString());
+            log("Error at CartController: " + e);
         } finally {
             request.getRequestDispatcher("carts.jsp").forward(request, response);
         }

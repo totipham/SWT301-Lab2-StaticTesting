@@ -55,7 +55,7 @@ public class UpdateOrderController extends HttpServlet {
                 response.sendRedirect("HomeController");
             }
         } catch (Exception e) {
-            log("Error at UpdateOrderController: " + e.toString());
+            log("Error at UpdateOrderController: " + e);
         }
     }
 

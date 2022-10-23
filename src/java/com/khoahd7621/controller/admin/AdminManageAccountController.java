@@ -24,7 +24,7 @@ public class AdminManageAccountController extends HttpServlet {
             request.setAttribute("listAccounts", listAccounts);
             request.setAttribute("destPage", "manageAccount");
         } catch (Exception e) {
-            log("Error at AdminManageAccountController: " + e.toString());
+            log("Error at AdminManageAccountController: " + e);
         } finally {
             request.getRequestDispatcher("manageAccount.jsp").forward(request, response);
         }

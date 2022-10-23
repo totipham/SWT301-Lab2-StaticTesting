@@ -28,7 +28,7 @@ public class BlogCategoryDAO {
             if (conn != null) {
                 psm = conn.prepareStatement(INSERT_NEW_BLOG_CATEGORY);
                 psm.setString(1, cateName);
-                check = psm.executeUpdate() > 0 ? true : false;
+                check = psm.executeUpdate() > 0;
             }
         } catch (Exception e) {
         } finally {
@@ -52,7 +52,7 @@ public class BlogCategoryDAO {
                 psm = conn.prepareStatement(UPDATE_BLOG_CATEGORY_INFO);
                 psm.setString(1, name);
                 psm.setInt(2, id);
-                check = psm.executeUpdate() > 0 ? true : false;
+                check = psm.executeUpdate() > 0;
             }
         } catch (Exception e) {
         } finally {

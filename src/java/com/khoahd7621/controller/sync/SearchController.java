@@ -62,7 +62,7 @@ public class SearchController extends HttpServlet {
                 request.getRequestDispatcher("search.jsp").forward(request, response);
             }
         } catch (Exception e) {
-            log("Error at SearchController: " + e.toString());
+            log("Error at SearchController: " + e);
         }
     }
 

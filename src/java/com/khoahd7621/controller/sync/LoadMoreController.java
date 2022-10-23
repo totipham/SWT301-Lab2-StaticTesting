@@ -51,7 +51,7 @@ public class LoadMoreController extends HttpServlet {
                 }
             }
         } catch (Exception e) {
-            log("Error at LoadMoreController: " + e.toString());
+            log("Error at LoadMoreController: " + e);
         }
     }
 

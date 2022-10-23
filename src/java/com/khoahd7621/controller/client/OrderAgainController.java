@@ -40,7 +40,7 @@ public class OrderAgainController extends HttpServlet {
             session.setAttribute("subCarts", subCarts);
             response.sendRedirect("orderAgain.jsp");
         } catch (Exception e) {
-            log("Error at OrderAgainController: " + e.toString());
+            log("Error at OrderAgainController: " + e);
         }
     }
 
@@ -104,7 +104,7 @@ public class OrderAgainController extends HttpServlet {
                 response.sendRedirect("HomeController");
             }
         } catch (Exception e) {
-            log("Error at CheckoutController: " + e.toString());
+            log("Error at CheckoutController: " + e);
         }
     }
 

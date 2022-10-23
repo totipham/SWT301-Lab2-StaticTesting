@@ -45,7 +45,7 @@ public class HomeController extends HttpServlet {
             session.setAttribute("urlHistory", "HomeController");
             session.setAttribute("destPage", "home");
         } catch (Exception e) {
-            log("Error at HomeController: " + e.toString());
+            log("Error at HomeController: " + e);
         } finally {
             request.getRequestDispatcher("home.jsp").forward(request, response);
         }

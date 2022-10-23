@@ -70,7 +70,7 @@ public class ViewAllController extends HttpServlet {
                 }
             }
         } catch (Exception e) {
-            log("Error at ViewAllController: " + e.toString());
+            log("Error at ViewAllController: " + e);
         }
     }
 

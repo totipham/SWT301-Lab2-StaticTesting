@@ -35,7 +35,7 @@ public class BlogDetailController extends HttpServlet {
                 response.sendRedirect("invalid.jsp");
             }
         } catch (Exception e) {
-            log("Error at BlogDetailController: " + e.toString());
+            log("Error at BlogDetailController: " + e);
         }
     }
 

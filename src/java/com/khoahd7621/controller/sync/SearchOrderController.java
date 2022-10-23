@@ -40,7 +40,7 @@ public class SearchOrderController extends HttpServlet {
                 request.getRequestDispatcher("order.jsp").forward(request, response);
             }
         } catch (Exception e) {
-            log("Error at SearchOrderController: " + e.toString());
+            log("Error at SearchOrderController: " + e);
         }
     }
 

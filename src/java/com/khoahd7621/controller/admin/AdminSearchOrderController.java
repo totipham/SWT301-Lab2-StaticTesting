@@ -37,7 +37,7 @@ public class AdminSearchOrderController extends HttpServlet {
                 request.getRequestDispatcher("manageOrder.jsp").forward(request, response);
             }
         } catch (Exception e) {
-            log("Error at AdminSearchOrderController: " + e.toString());
+            log("Error at AdminSearchOrderController: " + e);
         }
     }
 

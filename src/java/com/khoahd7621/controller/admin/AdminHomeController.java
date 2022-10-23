@@ -28,7 +28,6 @@ public class AdminHomeController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ADMIN_PAGE;
         try {
             HttpSession session = request.getSession();
             
@@ -43,9 +42,9 @@ public class AdminHomeController extends HttpServlet {
             request.setAttribute("listOrders", listOrders);
             request.setAttribute("destPage", "dashboard");
         } catch (Exception e) {
-            log("Error at AdminHomeController: " + e.toString());
+            log("Error at AdminHomeController: " + e);
         } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+            request.getRequestDispatcher(ADMIN_PAGE).forward(request, response);
         }
     }
 

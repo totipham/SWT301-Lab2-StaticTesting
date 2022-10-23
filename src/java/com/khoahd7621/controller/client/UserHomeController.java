@@ -21,7 +21,7 @@ public class UserHomeController extends HttpServlet {
             session.setAttribute("destPage", "user");
             request.getRequestDispatcher("user.jsp").forward(request, response);
         } catch (Exception e) {
-            log("Error at UserHomeController: " + e.toString());
+            log("Error at UserHomeController: " + e);
         }
     }
 

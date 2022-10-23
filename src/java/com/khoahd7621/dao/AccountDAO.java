@@ -41,7 +41,7 @@ public class AccountDAO {
                 psm = conn.prepareStatement(UPDATE_PASSWORD);
                 psm.setString(1, newPassword);
                 psm.setInt(2, accId);
-                check = psm.executeUpdate() > 0 ? true : false;
+                check = psm.executeUpdate() > 0;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -162,7 +162,7 @@ public class AccountDAO {
                 psm = conn.prepareStatement(UPDATE_TOKEN);
                 psm.setString(1, token);
                 psm.setString(2, email);
-                check = psm.executeUpdate() > 0 ? true : false;
+                check = psm.executeUpdate() > 0;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -415,7 +415,7 @@ public class AccountDAO {
                 stm = conn.prepareStatement(UPDATE_ACCOUNT_STATUS);
                 stm.setInt(1, status);
                 stm.setString(2, email);
-                check = stm.executeUpdate() > 0 ? true : false;
+                check = stm.executeUpdate() > 0;
             }
         } catch (Exception e) {
         } finally {
@@ -441,7 +441,7 @@ public class AccountDAO {
                 stm.setString(2, newPhone);
                 stm.setString(3, newPassword);
                 stm.setString(4, email);
-                check = stm.executeUpdate() > 0 ? true : false;
+                check = stm.executeUpdate() > 0;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -467,7 +467,7 @@ public class AccountDAO {
                 stm.setString(1, newFullname);
                 stm.setString(2, newPhone);
                 stm.setString(3, email);
-                check = stm.executeUpdate() > 0 ? true : false;
+                check = stm.executeUpdate() > 0;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -496,7 +496,7 @@ public class AccountDAO {
                 stm.setString(4, newPhone);
                 stm.setInt(5, newStatus);
                 stm.setInt(6, newRole);
-                check = stm.executeUpdate() > 0 ? true : false;
+                check = stm.executeUpdate() > 0;
             }
         } catch (Exception e) {
             e.printStackTrace();

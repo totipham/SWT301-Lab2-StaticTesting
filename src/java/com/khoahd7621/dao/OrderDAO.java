@@ -384,7 +384,7 @@ public class OrderDAO {
                 stm = conn.prepareStatement(FINISH_ORDER);
                 stm.setInt(1, orderStatus);
                 stm.setInt(2, orderId);
-                check = stm.executeUpdate() > 0 ? true : false;
+                check = stm.executeUpdate() > 0;
             }
         } catch (Exception e) {
         } finally {
@@ -408,7 +408,7 @@ public class OrderDAO {
                 stm = conn.prepareStatement(UPDATE_ORDER_STATUS);
                 stm.setInt(1, orderStatus);
                 stm.setInt(2, orderId);
-                check = stm.executeUpdate() > 0 ? true : false;
+                check = stm.executeUpdate() > 0;
             }
         } catch (Exception e) {
         } finally {

@@ -49,7 +49,7 @@ public class UpdatePlantController extends HttpServlet {
                 request.setAttribute("MSG_ERROR", "Oops, something went wrong! Try later!");
             }
         } catch (Exception e) {
-            log("Error at UpdatePlantController: " + e.toString());
+            log("Error at UpdatePlantController: " + e);
         } finally {
             request.getRequestDispatcher("AdminManagePlantController").forward(request, response);
         }

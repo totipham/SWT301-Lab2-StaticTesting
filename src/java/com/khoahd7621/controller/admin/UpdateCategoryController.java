@@ -50,7 +50,7 @@ public class UpdateCategoryController extends HttpServlet {
                 request.setAttribute("MSG_ERROR", "Oops, something went wrong! Try later!");
             }
         } catch (Exception e) {
-            log("Error at UpdateCategoryController: " + e.toString());
+            log("Error at UpdateCategoryController: " + e);
         } finally {
             request.getRequestDispatcher("AdminManageCategoryController").forward(request, response);
         }

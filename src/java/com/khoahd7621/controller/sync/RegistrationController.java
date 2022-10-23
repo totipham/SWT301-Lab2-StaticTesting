@@ -36,7 +36,7 @@ public class RegistrationController extends HttpServlet {
             }
             
         } catch (Exception e) {
-            log("Error at RegistrationController: " + e.toString());
+            log("Error at RegistrationController: " + e);
         }
     }
 
@@ -63,7 +63,7 @@ public class RegistrationController extends HttpServlet {
                 }
             }
         } catch (Exception e) {
-            log("Error at RegistrationController: " + e.toString());
+            log("Error at RegistrationController: " + e);
         }
     }
 
