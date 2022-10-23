@@ -1,11 +1,5 @@
 package com.khoahd7621.controller.client;
 
-import com.khoahd7621.dao.OrderDAO;
-import com.khoahd7621.dao.OrderDetailDAO;
-import com.khoahd7621.dao.PlantDAO;
-import com.khoahd7621.model.Account;
-import com.khoahd7621.model.Cart;
-import com.khoahd7621.model.OrderDetail;
 import com.khoahd7621.util.SendMailUtils;
 import java.io.IOException;
 import java.util.LinkedHashMap;
@@ -25,7 +19,7 @@ import javax.servlet.http.HttpSession;
 public class OrderAgainController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException {
         response.setContentType("text/html;charset=UTF-8");
         try {
             HttpSession session = request.getSession();
@@ -44,64 +38,68 @@ public class OrderAgainController extends HttpServlet {
         }
     }
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try {
-            HttpSession session = request.getSession();
-
-            String name = request.getParameter("name");
-            String phone = request.getParameter("phone");
-            String address = request.getParameter("address");
-            String note = request.getParameter("note").trim();
-            if (note == null || note.isEmpty()) {
-                note = "No notes";
-            }
-
-            Account account = (Account) session.getAttribute("LOGIN_USER");
-
-            // Save all to database
-            Map<Integer, Cart> carts = (Map<Integer, Cart>) session.getAttribute("subCarts");
-            if (carts != null && !carts.isEmpty()) { // Cart is not empty
-                if (account != null) { // User had login
-                    boolean result = new OrderDAO().insertOrder(account.getAccId(), carts, name, phone, address, note);
-                    if (result) {
-                        session.removeAttribute("subCarts");
-                        try {
-                            String subject = "Your order has been processing";
-                            String message = "<!DOCTYPE html>\n"
-                                    + "<html lang=\"en\">\n"
-                                    + "\n"
-                                    + "<head>\n"
-                                    + "</head>\n"
-                                    + "\n"
-                                    + "<body>\n"
-                                    + "    <h3 style=\"color: blue;\">Thank you very much!</h3>\n"
-                                    + "\n"
-                                    + "</body>\n"
-                                    + "\n"
-                                    + "</html>";
-                            SendMailUtils.send(account.getEmail(), subject, message);
-                        } catch (Exception e) {
-                            log("Error occur when send mail to user after place order sucessfully!");
-                        }
-                        request.setAttribute("MSG_SUCCESS", "Your reorder successfully!");
-                        request.getRequestDispatcher("UserViewOrderController").forward(request, response);
-                    } else {
-                        request.setAttribute("MSG_ERROR", "These products are out of stock!");
-                        request.getRequestDispatcher("UserViewOrderController").forward(request, response);
-                    }
-                } else {
-                    response.sendRedirect("HomeController");
-                }
-            } else {
-                response.sendRedirect("HomeController");
+// --Commented out by Inspection START (10/23/2022 9:00 PM):
+//    @Override
+//    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+// --Commented out by Inspection START (10/23/2022 9:00 PM):
+////            throws ServletException, IOException {
+////        processRequest(request, response);
+////    }
+//// --Commented out by Inspection STOP (10/23/2022 9:00 PM)
+//
+//    @Override
+//    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+//            throws ServletException {
+//        try {
+//            HttpSession session = request.getSession();
+//
+//            String name = request.getParameter("name");
+//            String phone = request.getParameter("phone");
+//            String address = request.getParameter("address");
+//            String note = request.getParameter("note").trim();
+//            if (note == null || note.isEmpty()) {
+//                note = "No notes";
+//            }
+//
+//            Account account = (Account) session.getAttribute("LOGIN_USER");
+//
+//            // Save all to database
+//            Map<Integer, Cart> carts = (Map<Integer, Cart>) session.getAttribute("subCarts");
+//            if (carts != null && !carts.isEmpty()) { // Cart is not empty
+//                if (account != null) { // User had login
+//                    boolean result = new OrderDAO().insertOrder(account.getAccId(), carts, name, phone, address, note);
+//                    if (result) {
+//                        session.removeAttribute("subCarts");
+//                        try {
+//                            String subject = "Your order has been processing";
+//                            String message = "<!DOCTYPE html>\n"
+//                                    + "<html lang=\"en\">\n"
+//                                    + "\n"
+//                                    + "<head>\n"
+//                                    + "</head>\n"
+//                                    + "\n"
+//                                    + "<body>\n"
+//                                    + "    <h3 style=\"color: blue;\">Thank you very much!</h3>\n"
+//                                    + "\n"
+//                                    + "</body>\n"
+//                                    + "\n"
+//                                    + "</html>";
+//                            SendMailUtils.send(account.getEmail(), subject, message);
+//                        } catch (Exception e) {
+//                            log("Error occur when send mail to user after place order sucessfully!");
+//                        }
+//                        request.setAttribute("MSG_SUCCESS", "Your reorder successfully!");
+//                        request.getRequestDispatcher("UserViewOrderController").forward(request, response);
+//                    } else {
+//                        request.setAttribute("MSG_ERROR", "These products are out of stock!");
+//                        request.getRequestDispatcher("UserViewOrderController").forward(request, response);
+//                    }
+//                } else {
+//                    response.sendRedirect("HomeController");
+//                }
+//            } else {
+//                response.sendRedirect("HomeController");
+// --Commented out by Inspection STOP (10/23/2022 9:00 PM)
             }
         } catch (Exception e) {
             log("Error at CheckoutController: " + e);

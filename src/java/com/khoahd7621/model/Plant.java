@@ -8,25 +8,27 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-/**
- *
- * @author KhoaHD7621
- */
-
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-@ToString
-public class Plant implements Serializable {
-    
-    private int id;
-    private String name;
-    private int price;
-    private String imgPath;
-    private String description;
-    private int status;
-    private int categoryId;
-    
-}
+// --Commented out by Inspection START (10/23/2022 9:01 PM):
+///**
+// *
+// * @author KhoaHD7621
+// */
+//
+//@Builder
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@Getter
+//@Setter
+//@ToString
+//public class Plant implements Serializable {
+//
+//    private int id;
+//    private String name;
+//    private int price;
+//    private String imgPath;
+//    private String description;
+//    private int status;
+//    private int categoryId;
+//
+//}
+// --Commented out by Inspection STOP (10/23/2022 9:01 PM)

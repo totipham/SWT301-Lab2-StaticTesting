@@ -8,25 +8,27 @@ import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-/**
- *
- * @author KhoaHD7621
- */
-
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-@ToString
-public class Account implements Serializable{
-    
-    private int accId;
-    private String email;
-    private String password;
-    private String fullName;
-    private int status;
-    private String phone;
-    private int role;
-    
-}
+// --Commented out by Inspection START (10/23/2022 9:00 PM):
+///**
+// *
+// * @author KhoaHD7621
+// */
+//
+//@Builder
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@Getter
+//@Setter
+//@ToString
+//public class Account implements Serializable{
+//
+//    private int accId;
+//    private String email;
+//    private String password;
+//    private String fullName;
+//    private int status;
+//    private String phone;
+//    private int role;
+//
+//}
+// --Commented out by Inspection STOP (10/23/2022 9:00 PM)
